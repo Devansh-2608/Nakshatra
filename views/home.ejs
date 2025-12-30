@@ -1,0 +1,98 @@
+<% layout("/layouts/boiler") -%>
+<style>
+  body {
+  margin: 0;
+  height: 100vh;
+  overflow-y: hidden;
+  background-color: black;
+}
+
+.home {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+.home img {
+  position: absolute;
+  top: 210px;       
+  left: 51%;
+  transform: translateX(-50%);
+  width: 1000px;
+
+  animation: rotate 40s linear infinite;
+}
+.home #left {
+  position: absolute;
+  bottom: 150px;       
+  right: 10%;
+  transform: translateX(-50%);
+
+}
+.home #right {
+  position: absolute;
+  bottom: 150px;       
+  left: 15%;
+  transform: translateX(-50%);
+
+}
+@keyframes rotate {
+  from {
+    transform: translate(-50%) rotate(0deg);
+  }
+
+  to {
+    transform:translate(-50%) rotate(100deg);
+  }
+}
+h1{
+  color: white;
+  font-size: 4rem;
+  position: absolute;
+  left: 38.9%;
+  top: 8%;
+}
+p{
+  color: white;
+  font-size: 2rem;
+  position: absolute;
+  left: 27%;
+  top: 20%;
+}
+
+#myToast {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  z-index: 99999;
+}
+
+</style>
+<!-- <body>
+  <div class="home">
+    <img src="/image/Earth.png" alt="homeImg">
+    <button id="speedbutton">spe</button>
+  </div>
+</body> -->
+
+<body class="<%= route === '/' ? 'home-page' : '' %>">
+  <div class="home">
+    <h1>NAKSHATRA</h1>
+    <p>THE ASTRONOMY AND SCIENCE CLUB OF NIT TRICHY</p>
+    <h5>Devansh</h5>
+    <img src="/image/Earth.png" alt="homeImg">
+    <a class="speedbutton" id="left"><i class="fa-solid fa-jet-fighter-up " style="font-size:3rem; color:white;"></i></a>
+    <a class="speedbutton" id="right"><i class="fa-solid fa-jet-fighter-up " style="font-size:3rem; color:white;"></i></a>
+  </div>
+
+  
+
+  <div id="myToast" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+    <div class="d-flex">
+      <div class="toast-body">
+        Press Jets to move fast.
+      </div>
+      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</body>

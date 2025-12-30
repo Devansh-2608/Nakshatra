@@ -1,0 +1,97 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #000016 !important;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Navbar */
+
+.navbar-brand img {
+  width: 50px;   
+  height: auto;  
+}
+.navbar .nav-link {
+  color: rgb(237, 231, 231) !important;
+}
+
+.navbar .nav-link:hover {
+  color: #847676 !important;
+}
+
+.navbar {
+  z-index: 10;
+  position: sticky; /* or fixed if you want always on top */
+}
+
+/* APOD */
+.page-center-apod {
+  width: 100vw;
+  height: 100vh; /* exactly viewport height */
+  display: flex;
+  justify-content: center; /* horizontal centering */
+  align-items: center;     /* vertical centering */
+  position: relative;      /* for z-index */
+  overflow: hidden;        /* prevent scrollbars */
+  padding: 20px;           /* optional padding for mobile */
+}
+.apod-div {
+  max-width: 90vw;
+  max-height: 90vh; /* prevents overflow on small screens */
+  display: flex;
+  flex-direction: row;
+  gap: 20px; /* spacing between image and text */
+  z-index: 2;
+}
+
+.img-col img,
+.img-col iframe {
+  max-width: 45vw; /* roughly half viewport width */
+  max-height: 80vh; /* fit within container height */
+  border-radius: 20px;
+  object-fit: contain;
+}
+
+.img-col a , .text-col{
+  color: white !important;
+  text-decoration: none !important;
+}
+
+#apod-img {
+  transition: opacity 0.3s ease-in-out;
+}
+.text-col {
+  color: white;
+  max-width: 45vw;
+  overflow: hidden; /* prevent scroll */
+}
+
+.apod-div {
+  background: rgba(0, 0, 0, 0.4); /* subtle dark background */
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: -50px;
+}
+
+@media(max-width: 768px){
+  .page-center-apod {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .img-col, .text-col {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+/* Starfield canvas */
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+};
+

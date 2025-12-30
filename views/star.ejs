@@ -1,0 +1,40 @@
+<%- layout("./layouts/boiler") %>
+
+<body>
+  <div class="page-center">
+    <div id="carouselExampleCaptions" class="carousel slide">
+  <div class="carousel-indicators">
+  <% starData.forEach((_, index) => { %>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleCaptions"
+      data-bs-slide-to="<%= index %>"
+      class="<%= index === 0 ? 'active' : '' %>"
+      aria-current="<%= index === 0 ? 'true' : 'false' %>">
+    </button>
+  <% }) %>
+</div>
+  <div class="carousel-inner">
+    <% starData.forEach((star, index) => { %>
+      <div class="carousel-item  <%= index === 0 ? 'active' : '' %>">
+        <img src="<%=star.img%>" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5><%= star.title%></h5>
+          <p><%= star.description%></p>
+          <a href="<%= star.link %>" class="Know-more-link" target="_blank">Know More</a>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+     <span style="font-size:3rem; color:red;">&#10094;</span> <!-- left arrow -->
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+     <span style="font-size:3rem; color:red;">&#10095;</span> <!-- right arrow -->
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+</body>
