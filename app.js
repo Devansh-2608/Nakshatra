@@ -24,10 +24,24 @@ app.get("/apod",async (req,res,next)=>{
   const apiurl = "https://api.nasa.gov/planetary/apod?api_key=I7gvHZ7EFKsGyBDWjkpvoRiNUW2X2u5Aq3dqc7nh";
   try {
     const response = await fetch(apiurl);
-    const data = await response.json();
-    if(!data.url){
+    if (!response.ok) {
+      throw new Error(`NASA API failed with status ${response.status}`);
+    }
+
+    const text = await response.text(); // safer than json()
+
+    if (!text) {
+      throw new Error("Empty response from NASA API");
+    }
+    const data = JSON.parse(text);
+
+    if (!data.url && data.thumbnail_url) {
       data.url = data.thumbnail_url;
     }
+    // const data = await response.json();
+    // if(!data.url){
+    //   data.url = data.thumbnail_url;
+    // }
     res.render("apod.ejs",{data});
     // console.log("Content object:", data);
   } catch (err) {
@@ -49,10 +63,18 @@ app.get("/stars",(req,res)=>{
 
 
 // Global error handler (LAST)
-app.use((err,req,res,next)=>{
-  let { statusCode = 500, message = " Globally Something went wrong" } = err;
-  res.status(statusCode).render(message);
+// app.use((err,req,res,next)=>{
+//   let { statusCode = 500, message = " Globally Something went wrong" } = err;
+//   res.status(statusCode).render(message);
+// });
+app.use((err, req, res, next) => {
+  console.error(err.message);
+
+  res.status(500).render("error.ejs", {
+    message: err.message
+  });
 });
+
 
 
 app.listen(port, () => {
