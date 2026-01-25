@@ -4,6 +4,8 @@ const ejsmate = require("ejs-mate");
 const fetch = require("node-fetch");  // to parse api data.
 require('dotenv').config();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 const { cometData } = require("./data/cometData");
 const { planetData } = require("./data/planetData");
@@ -61,6 +63,16 @@ app.get("/planets",(req,res)=>{
 app.get("/stars",(req,res)=>{
   res.render("star.ejs" , { starData });
 });
+
+app.get("/login",(req,res)=>{
+  res.render("login.ejs");
+});
+
+app.post("/", (req, res) => {
+  console.log(req.body);
+  res.redirect("/");
+});
+
 
 app.get("/knowmore/:category/:id", (req, res,next) => {
   // console.log(req.params);
