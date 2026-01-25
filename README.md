@@ -10,6 +10,9 @@
 
 ![KnowMorePage](KnowMorePage.png)
 
+![LoginPage](https://github.com/Devansh-2608/Nakshatra/blob/650002478bb2aedba435395f2f635701bca61815/Login.png)
+![SignUp](https://github.com/Devansh-2608/Nakshatra/blob/650002478bb2aedba435395f2f635701bca61815/SignUp.png)
+
 ---
 
 ## 📌 Project Overview
@@ -47,7 +50,7 @@ It fetches real-time astronomy data from the **NASA API**, renders dynamic views
 
 ## 🔮 Future Plans
 
-1. **Admin Login:** Create a secure login page for authorized users to add or modify facts about planets, stars, comets, etc., including daily information.
+🟢 1. **Admin Login:** Create a secure login page for authorized users to add or modify facts about planets, stars, comets, etc., including daily information.
 
 2. **Authentication & Authorization:** Implement proper authentication and authorization to protect admin functionalities.
 
@@ -57,7 +60,7 @@ It fetches real-time astronomy data from the **NASA API**, renders dynamic views
 
 🟢 5. **User Dashboard:** Create a dashboard where visitors can view the most recent updates, trending celestial events, or daily astronomy facts.
 
-6. **Interactive Visuals:** Integrate charts, graphs, or animations (e.g., planet positions, star maps) for a more engaging experience.
+🟡 6. **Interactive Visuals:** Integrate charts, graphs, or animations (e.g., planet positions, star maps) for a more engaging experience.
 
 7. **Notifications & Updates:** Send daily or weekly astronomy updates via email or notifications for registered users.
 
