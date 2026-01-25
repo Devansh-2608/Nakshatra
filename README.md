@@ -8,6 +8,8 @@
 
 ![API Data](API-Data.png)
 
+![KnowMorePage](KnowMorePage.png)
+
 ---
 
 ## 📌 Project Overview
@@ -49,17 +51,17 @@ It fetches real-time astronomy data from the **NASA API**, renders dynamic views
 
 2. **Authentication & Authorization:** Implement proper authentication and authorization to protect admin functionalities.
 
-3. **Enhanced Landing Page:** Build a dedicated landing page with additional astronomy information, instead of relying on external sources.
+🟢 3.  **Enhanced Landing Page:** Build a dedicated landing page with additional astronomy information instead of relying on external sources.
 
 4. **Search & Filter:** Add search and filter functionality to quickly find specific celestial objects, facts, or images.
 
-5. **User Dashboard:** Create a dashboard where visitors can view the most recent updates, trending celestial events, or daily astronomy facts.
+🟢 5. **User Dashboard:** Create a dashboard where visitors can view the most recent updates, trending celestial events, or daily astronomy facts.
 
 6. **Interactive Visuals:** Integrate charts, graphs, or animations (e.g., planet positions, star maps) for a more engaging experience.
 
 7. **Notifications & Updates:** Send daily or weekly astronomy updates via email or notifications for registered users.
 
-8. **API Expansion:** Integrate additional APIs (e.g., space news, live satellite data, astronomy events) to make the app richer.
+🟢 8. **API Expansion:** Integrate additional APIs (e.g., space news, live satellite data, astronomy events) to make the app richer.
 
 9. **Mobile Optimization:** Enhance mobile responsiveness and potentially create a progressive web app (PWA) for offline access.
 
