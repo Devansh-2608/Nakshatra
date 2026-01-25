@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
 const ejsmate = require("ejs-mate");
-const fetch = require("node-fetch");  // to parse api data   or we can use axios.
+const fetch = require("node-fetch");  // to parse api data.
+require('dotenv').config();
+
 
 const { cometData } = require("./data/cometData");
 const { planetData } = require("./data/planetData");
@@ -14,14 +16,15 @@ const port = 3000;
 app.engine("ejs" ,ejsmate);              //All .ejs files are rendered using ejs-mate
 app.set("view engine","ejs");            //using EJS as template engine
 app.set("views",path.join(__dirname,"views"));
-app.use(express.static(path.join(__dirname,"public")));
+app.use(express.static(path.join(__dirname,"public")));  //  Serve public folder first
 
 app.get("/",(req,res)=>{
   res.render("home.ejs" , { route: "/" });
 });
 
 app.get("/apod",async (req,res,next)=>{
-  const apiurl = "https://api.nasa.gov/planetary/apod?api_key=I7gvHZ7EFKsGyBDWjkpvoRiNUW2X2u5Aq3dqc7nh";
+  let apiKey = process.env.NASA_API_KEY;
+  const apiurl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
   try {
     const response = await fetch(apiurl);
     if (!response.ok) {
@@ -59,18 +62,40 @@ app.get("/stars",(req,res)=>{
   res.render("star.ejs" , { starData });
 });
 
+app.get("/knowmore/:category/:id", (req, res,next) => {
+  // console.log(req.params);
+  let { id , category } = req.params;
+  // console.log("REQ PARAMS:", req.params);
+
+  //dataset selection
+  let dataset;
+  if (category === "planets") dataset = planetData;
+  else if (category === "comets") dataset = cometData;
+  else if (category === "stars") dataset = starData;
+  else {
+    const err = new Error("Category not found");
+    err.status = 404;
+    return next(err);
+  }
+  // console.log(dataset);
+  const info = dataset.find(item => item.id === id.toString()); // ensure string
+  // console.log(info);
+  if (!info) {
+    const err = new Error(`${category.slice(0, -1)} not found`); // removes plural
+    err.status = 404;
+    return next(err);
+  }
+
+  res.render("knowmore.ejs", { info });
+});
+
+// app.get('/favicon.ico', (req, res) => res.status(204).end());
 
 
-
-// Global error handler (LAST)
-// app.use((err,req,res,next)=>{
-//   let { statusCode = 500, message = " Globally Something went wrong" } = err;
-//   res.status(statusCode).render(message);
-// });
 app.use((err, req, res, next) => {
   console.error(err.message);
 
-  res.status(500).render("error.ejs", {
+  res.status(err.status || 500).render("error.ejs", {
     message: err.message
   });
 });

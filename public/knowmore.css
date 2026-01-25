@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  padding: 0;
+  color: white;
+  background-color: #0B192C;
+}
+
+.outterdiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
+}
+
+.innerdiv{
+  max-width: 80%;
+  padding: 1rem;
+}
+
+/* .innerdiv h1,p{
+  background-color: black;
+} */
+
+.outterdiv h1 {
+  z-index: 1;       /* ensure text is above canvas */
+  text-align: center;
+  font-size: clamp(1.1rem, 4vw, 2.2rem);
+}
+
+
+/* homebutton */
+.home{
+  color: white;
+  position: fixed;
+  top: 0.8rem;
+  left: 1rem;
+  z-index: 1000;
+}
+.out-link{
+  color: white;
+  position: fixed;
+  top: 3rem;
+  left: 1rem;
+  z-index: 1000;
+}
+
+canvas#bg {
+  position: fixed;   /* stays in place even on scroll */
+  top: 0;
+  left: 0;
+  width: 100vw;      /* full viewport width */
+  height: 100vh;     /* full viewport height */
+  z-index: -1;       /* behind all other content */
+  background: transparent; /* temporary for testing */
+}

@@ -17,7 +17,6 @@ for (let i = 0; i < 300; i++) {
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
     r: Math.random() * 1.5 + 0.5,
-    // speed: speedHome,
   });
 }
 
@@ -33,20 +32,6 @@ if (document.body.classList.contains('home-page')) {
 
   toast.show(); // automatically shows the toast
 
-  // const speedbtn = document.getElementById('speedbutton');
-  // let isPressed = false;
-
-  // speedbtn.addEventListener("mousedown", () => {
-  //   isPressed = true;
-  // });
-
-  // speedbtn.addEventListener("mouseup", () => {
-  //   isPressed = false;
-  // });
-
-  // speedbtn.addEventListener("mouseleave", () => {
-  //   isPressed = false;
-  // });
   const speedButtons = document.querySelectorAll('.speedbutton');
   let isPressed = false;
 
@@ -98,11 +83,6 @@ function animateStars() {
 animateStars();
 
 
-// // Handle window resize
-// window.addEventListener('resize', () => {
-//   canvas.width = window.innerWidth;
-//   canvas.height = window.innerHeight;
-// });
 
 
 
